@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu Trúc Dữ Liệu - Đồ Thị (Graph)</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="logo-animation">
+                <i class="fas fa-project-diagram"></i>
+            </div>
+            <h2>Graph Theory</h2>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p>Đang tải nội dung...</p>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="fab-container">
+        <button class="fab" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="fab" id="fullscreenBtn">
+            <i class="fas fa-expand"></i>
+        </button>
+        <button class="fab" id="scrollToTop">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <header class="modern-header">
+        <div class="header-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+        <div class="header-content">
+            <div class="header-icon">
+                <i class="fas fa-project-diagram"></i>
+            </div>
+            <h1 class="glitch-text" data-text="Cấu Trúc Dữ Liệu & Giải Thuật">
+                Cấu Trúc Dữ Liệu & Giải Thuật
+            </h1>
+            <h2 class="typing-animation">Đồ Thị (Graph)</h2>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <i class="fas fa-code"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-brain"></i>
+                    <span>Algorithms</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-chart-network"></i>
+                    <span>Graph Theory</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="modern-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-sitemap"></i>
+                <span>Graph Explorer</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#introduction" class="nav-link" data-section="introduction">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Giới thiệu</span>
+                </a></li>
+                <li><a href="#types" class="nav-link" data-section="types">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Phân loại</span>
+                </a></li>
+                <li><a href="#representation" class="nav-link" data-section="representation">
+                    <i class="fas fa-table"></i>
+                    <span>Biểu diễn</span>
+                </a></li>
+                <li><a href="#algorithms" class="nav-link" data-section="algorithms">
+                    <i class="fas fa-cogs"></i>
+                    <span>Thuật toán</span>
+                </a></li>
+                <li><a href="#demo" class="nav-link" data-section="demo">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Demo</span>
+                </a></li>
+                <li><a href="#examples" class="nav-link" data-section="examples">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Ví dụ</span>
+                </a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="nav-progress"></div>
+    </nav>
+
+    <main class="main-content">
+        <section id="introduction" class="section-modern">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h3 class="section-title">
+                    <i class="fas fa-info-circle"></i>
+                    Giới thiệu về Đồ thị
+                </h3>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-text">
+                    <p class="lead-text">Đồ thị (Graph) là một cấu trúc dữ liệu phi tuyến tính mạnh mẽ, bao gồm một tập hợp các đỉnh (vertices/nodes) và các cạnh (edges) nối các đỉnh với nhau.</p>
+                    
+                    <div class="definition-card">
+                        <div class="definition-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="definition-content">
+                            <h4>Định nghĩa toán học:</h4>
+                            <div class="math-formula">
+                                <span class="formula">G = (V, E)</span>
+                            </div>
+                            <ul class="definition-list">
+                                <li><span class="highlight">V</span>: Tập hợp các đỉnh (vertices)</li>
+                                <li><span class="highlight">E</span>: Tập hợp các cạnh (edges)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-visual">
+                    <div class="graph-illustration">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/6n-graf.svg/250px-6n-graf.svg.png" 
+                             alt="Graph Example" class="responsive-img">
+                        <div class="img-overlay">
+                            <p>Ví dụ đồ thị với 6 đỉnh</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="real-world-examples">
+                <h4><i class="fas fa-globe"></i> Ứng dụng trong thực tế:</h4>
+                <div class="examples-grid">
+                    <div class="example-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="example-icon">
+                            <i class="fab fa-facebook"></i>
+                        </div>
+                        <h5>Mạng xã hội</h5>
+                        <p>Facebook, Twitter, LinkedIn sử dụng đồ thị để mô hình hóa mối quan hệ bạn bè</p>
+                    </div>
+                    <div class="example-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="example-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h5>Bản đồ GPS</h5>
+                        <p>Google Maps, Waze sử dụng đồ thị để tìm đường đi ngắn nhất</p>
+                    </div>
+                    <div class="example-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="example-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h5>Mạng máy tính</h5>
+                        <p>Internet, LAN, WAN được mô hình hóa bằng đồ thị</p>
+                    </div>
+                    <div class="example-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="example-icon">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                        <h5>Sinh học</h5>
+                        <p>Cây gia phả, mạng lưới protein, phân tích DNA</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="types" class="section-modern">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h3 class="section-title">
+                    <i class="fas fa-layer-group"></i>
+                    Phân loại Đồ thị
+                </h3>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="graph-types-modern">
+                <div class="type-card-modern" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card-header">
+                        <div class="card-icon undirected">
+                            <i class="fas fa-arrows-alt-h"></i>
+                        </div>
+                        <h4>Đồ thị Vô hướng</h4>
+                        <span class="card-badge">Undirected Graph</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Các cạnh không có hướng, có thể di chuyển theo cả hai chiều.</p>
+                        <div class="graph-visual-modern">
+                            <canvas id="undirected-demo" width="250" height="150"></canvas>
+                        </div>
+                        <div class="features">
+                            <span class="feature-tag">Đối xứng</span>
+                            <span class="feature-tag">Hai chiều</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-card-modern" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card-header">
+                        <div class="card-icon directed">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <h4>Đồ thị Có hướng</h4>
+                        <span class="card-badge">Directed Graph</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Các cạnh có hướng, chỉ có thể di chuyển theo một chiều.</p>
+                        <div class="graph-visual-modern">
+                            <canvas id="directed-demo" width="250" height="150"></canvas>
+                        </div>
+                        <div class="features">
+                            <span class="feature-tag">Có hướng</span>
+                            <span class="feature-tag">Một chiều</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-card-modern" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card-header">
+                        <div class="card-icon weighted">
+                            <i class="fas fa-weight-hanging"></i>
+                        </div>
+                        <h4>Đồ thị Có trọng số</h4>
+                        <span class="card-badge">Weighted Graph</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Mỗi cạnh có một giá trị trọng số đi kèm.</p>
+                        <div class="graph-visual-modern">
+                            <canvas id="weighted-demo" width="250" height="150"></canvas>
+                        </div>
+                        <div class="features">
+                            <span class="feature-tag">Có trọng số</span>
+                            <span class="feature-tag">Chi phí</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="representation" class="section-modern">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h3 class="section-title">
+                    <i class="fas fa-table"></i>
+                    Biểu diễn Đồ thị
+                </h3>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="representation-comparison">
+                <div class="method-card" data-aos="slide-right">
+                    <div class="method-header">
+                        <div class="method-icon matrix">
+                            <i class="fas fa-th"></i>
+                        </div>
+                        <h4>Ma trận kề (Adjacency Matrix)</h4>
+                        <div class="complexity-badge">O(V²) space</div>
+                    </div>
+                    <div class="method-content">
+                        <p>Sử dụng ma trận 2D để biểu diễn mối quan hệ giữa các đỉnh.</p>
+                        
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span class="code-lang">JavaScript</span>
+                                <button class="copy-btn" data-code="matrix">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                            <pre class="code-block"><code class="language-javascript">// Ma trận kề cho đồ thị vô hướng
+const adjacencyMatrix = [
+    [0, 1, 1, 0, 0],  // A -> B, C
+    [1, 0, 1, 1, 0],  // B -> A, C, D  
+    [1, 1, 0, 1, 1],  // C -> A, B, D, E
+    [0, 1, 1, 0, 1],  // D -> B, C, E
+    [0, 0, 1, 1, 0]   // E -> C, D
+];
+
+// Kiểm tra kết nối
+function isConnected(i, j) {
+    return adjacencyMatrix[i][j] === 1;
+}</code></pre>
+                        </div>
+                        
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h5><i class="fas fa-check-circle"></i> Ưu điểm:</h5>
+                                <ul>
+                                    <li>Kiểm tra kết nối O(1)</li>
+                                    <li>Dễ hiểu và cài đặt</li>
+                                    <li>Phù hợp đồ thị dày đặc</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h5><i class="fas fa-times-circle"></i> Nhược điểm:</h5>
+                                <ul>
+                                    <li>Tốn bộ nhớ O(V²)</li>
+                                    <li>Lãng phí với đồ thị thưa</li>
+                                    <li>Thêm/xóa đỉnh phức tạp</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="method-card" data-aos="slide-left">
+                    <div class="method-header">
+                        <div class="method-icon list">
+                            <i class="fas fa-list"></i>
+                        </div>
+                        <h4>Danh sách kề (Adjacency List)</h4>
+                        <div class="complexity-badge">O(V+E) space</div>
+                    </div>
+                    <div class="method-content">
+                        <p>Sử dụng mảng/danh sách để lưu trữ các đỉnh kề.</p>
+                        
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span class="code-lang">JavaScript</span>
+                                <button class="copy-btn" data-code="list">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                            <pre class="code-block"><code class="language-javascript">// Danh sách kề
+const adjacencyList = {
+    'A': ['B', 'C'],
+    'B': ['A', 'C', 'D'],
+    'C': ['A', 'B', 'D', 'E'],
+    'D': ['B', 'C', 'E'],
+    'E': ['C', 'D']
+};
+
+// Lấy các đỉnh kề
+function getNeighbors(vertex) {
+    return adjacencyList[vertex] || [];
+}
+
+// Thêm cạnh
+function addEdge(u, v) {
+    adjacencyList[u].push(v);
+    adjacencyList[v].push(u);
+}</code></pre>
+                        </div>
+                        
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h5><i class="fas fa-check-circle"></i> Ưu điểm:</h5>
+                                <ul>
+                                    <li>Tiết kiệm bộ nhớ</li>
+                                    <li>Duyệt đỉnh kề hiệu quả</li>
+                                    <li>Phù hợp đồ thị thưa</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h5><i class="fas fa-times-circle"></i> Nhược điểm:</h5>
+                                <ul>
+                                    <li>Kiểm tra kết nối O(V)</li>
+                                    <li>Phức tạp hơn để cài đặt</li>
+                                    <li>Cần pointer/reference</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visual-comparison" data-aos="fade-up">
+                <h4><i class="fas fa-eye"></i> So sánh trực quan</h4>
+                <div class="comparison-container">
+                    <canvas id="representation-demo" width="800" height="400"></canvas>
+                    <div class="comparison-controls">
+                        <button class="demo-btn active" data-mode="matrix">Ma trận kề</button>
+                        <button class="demo-btn" data-mode="list">Danh sách kề</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="algorithms" class="section-modern">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h3 class="section-title">
+                    <i class="fas fa-cogs"></i>
+                    Thuật toán Duyệt Đồ thị
+                </h3>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="algorithm-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="dfs">
+                        <i class="fas fa-arrow-down"></i>
+                        DFS - Depth First Search
+                    </button>
+                    <button class="tab-btn" data-tab="bfs">
+                        <i class="fas fa-arrow-right"></i>
+                        BFS - Breadth First Search
+                    </button>
+                </div>
+                
+                <div class="tab-content active" id="dfs-tab">
+                    <div class="algorithm-layout">
+                        <div class="algorithm-info">
+                            <div class="algorithm-header">
+                                <div class="algo-icon dfs-icon">
+                                    <i class="fas fa-arrow-down"></i>
+                                </div>
+                                <div class="algo-details">
+                                    <h4>Duyệt theo Chiều sâu (DFS)</h4>
+                                    <p>Đi sâu nhất có thể từ mỗi đỉnh trước khi quay lại</p>
+                                </div>
+                            </div>
+                            
+                            <div class="algorithm-properties">
+                                <div class="property-card">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Thời gian</span>
+                                    <strong>O(V + E)</strong>
+                                </div>
+                                <div class="property-card">
+                                    <i class="fas fa-memory"></i>
+                                    <span>Không gian</span>
+                                    <strong>O(V)</strong>
+                                </div>
+                                <div class="property-card">
+                                    <i class="fas fa-layer-group"></i>
+                                    <span>Cấu trúc</span>
+                                    <strong>Stack/Đệ quy</strong>
+                                </div>
+                            </div>
+
+                            <div class="algorithm-steps">
+                                <h5><i class="fas fa-list-ol"></i> Các bước thực hiện:</h5>
+                                <ol>
+                                    <li>Bắt đầu từ đỉnh cho trước</li>
+                                    <li>Đánh dấu đỉnh hiện tại đã thăm</li>
+                                    <li>Duyệt tất cả đỉnh kề chưa thăm</li>
+                                    <li>Đệ quy với mỗi đỉnh kề</li>
+                                    <li>Quay lại khi không còn đỉnh</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="algorithm-code">
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <span class="code-lang">JavaScript - DFS</span>
+                                    <button class="copy-btn" data-code="dfs">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <pre class="code-block"><code class="language-javascript">// DFS sử dụng đệ quy
+function dfsRecursive(graph, start, visited = new Set()) {
+    // Đánh dấu đỉnh hiện tại đã thăm
+    visited.add(start);
+    console.log(`Đang thăm: ${start}`);
+    
+    // Duyệt tất cả đỉnh kề
+    for (let neighbor of graph[start]) {
+        if (!visited.has(neighbor)) {
+            dfsRecursive(graph, neighbor, visited);
+        }
+    }
+    return visited;
+}
+
+// DFS sử dụng Stack (Iterative)
+function dfsIterative(graph, start) {
+    const visited = new Set();
+    const stack = [start];
+    const result = [];
+    
+    while (stack.length > 0) {
+        const vertex = stack.pop();
+        
+        if (!visited.has(vertex)) {
+            visited.add(vertex);
+            result.push(vertex);
+            
+            // Thêm các đỉnh kề vào stack
+            for (let neighbor of graph[vertex]) {
+                if (!visited.has(neighbor)) {
+                    stack.push(neighbor);
+                }
+            }
+        }
+    }
+    return result;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="algorithm-applications">
+                        <h5><i class="fas fa-lightbulb"></i> Ứng dụng DFS:</h5>
+                        <div class="application-grid">
+                            <div class="app-item">
+                                <i class="fas fa-route"></i>
+                                <span>Tìm đường trong mê cung</span>
+                            </div>
+                            <div class="app-item">
+                                <i class="fas fa-sync"></i>
+                                <span>Phát hiện chu trình</span>
+                            </div>
+                            <div class="app-item">
+                                <i class="fas fa-sort-amount-down"></i>
+                                <span>Topological sorting</span>
+                            </div>
+                            <div class="app-item">
+                                <i class="fas fa-project-diagram"></i>
+                                <span>Tìm thành phần liên thông</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="bfs-tab">
+                    <div class="algorithm-layout">
+                        <div class="algorithm-info">
+                            <div class="algorithm-header">
+                                <div class="algo-icon bfs-icon">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                                <div class="algo-details">
+                                    <h4>Duyệt theo Chiều rộng (BFS)</h4>
+                                    <p>Duyệt từng mức, khám phá tất cả đỉnh ở mức hiện tại</p>
+                                </div>
+                            </div>
+                            
+                            <div class="algorithm-properties">
+                                <div class="property-card">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Thời gian</span>
+                                    <strong>O(V + E)</strong>
+                                </div>
+                                <div class="property-card">
+                                    <i class="fas fa-memory"></i>
+                                    <span>Không gian</span>
+                                    <strong>O(V)</strong>
+                                </div>
+                                <div class="property-card">
+                                    <i class="fas fa-layer-group"></i>
+                                    <span>Cấu trúc</span>
+                                    <strong>Queue</strong>
+                                </div>
+                            </div>
+
+                            <div class="algorithm-steps">
+                                <h5><i class="fas fa-list-ol"></i> Các bước thực hiện:</h5>
+                                <ol>
+                                    <li>Thêm đỉnh bắt đầu vào queue</li>
+                                    <li>Lấy đỉnh đầu queue ra</li>
+                                    <li>Thăm và xử lý đỉnh này</li>
+                                    <li>Thêm tất cả đỉnh kề vào queue</li>
+                                    <li>Lặp lại đến khi queue rỗng</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="algorithm-code">
+                            <div class="code-container">
+                                <div class="code-header">
+                                    <span class="code-lang">JavaScript - BFS</span>
+                                    <button class="copy-btn" data-code="bfs">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <pre class="code-block"><code class="language-javascript">// BFS sử dụng Queue
+function bfs(graph, start) {
+    const visited = new Set();
+    const queue = [start];
+    const result = [];
+    
+    // Đánh dấu đỉnh bắt đầu
+    visited.add(start);
+    
+    while (queue.length > 0) {
+        const vertex = queue.shift(); // Lấy phần tử đầu
+        result.push(vertex);
+        console.log(`Đang thăm: ${vertex}`);
+        
+        // Duyệt tất cả đỉnh kề
+        for (let neighbor of graph[vertex]) {
+            if (!visited.has(neighbor)) {
+                visited.add(neighbor);
+                queue.push(neighbor); // Thêm vào cuối queue
+            }
+        }
+    }
+    return result;
+}
+
+// BFS tìm đường đi ngắn nhất
+function shortestPath(graph, start, target) {
+    const queue = [[start]]; // Lưu trữ đường đi
+    const visited = new Set([start]);
+    
+    while (queue.length > 0) {
+        const path = queue.shift();
+        const vertex = path[path.length - 1];
+        
+        if (vertex === target) {
+            return path; // Tìm thấy đích
+        }
+        
+        for (let neighbor of graph[vertex]) {
+            if (!visited.has(neighbor)) {
+                visited.add(neighbor);
+                queue.push([...path, neighbor]);
+            }
+        }
+    }
+    return null; // Không tìm thấy đường đi
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="algorithm-applications">
+                        <h5><i class="fas fa-lightbulb"></i> Ứng dụng BFS:</h5>
+                        <div class="application-grid">
+                            <div class="app-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Tìm đường đi ngắn nhất</span>
+                            </div>
+                            <div class="app-item">
+                                <i class="fas fa-layer-group"></i>
+                                <span>Level order traversal</span>
+                            </div>
+                            <div class="app-item">
+                                <i class="fas fa-users"></i>
+                                <span>Social networking</span>
+                            </div>
+                            <div class="app-item">
+                                <i class="fas fa-broadcast-tower"></i>
+                                <span>Network broadcasting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="section-modern">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h3 class="section-title">
+                    <i class="fas fa-play-circle"></i>
+                    Demo Tương tác
+                </h3>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="demo-modern">
+                <div class="demo-layout">
+                    <div class="demo-sidebar">
+                        <div class="demo-controls">
+                            <div class="control-section">
+                                <h4><i class="fas fa-cog"></i> Cài đặt</h4>
+                                
+                                <div class="control-group">
+                                    <label for="startNode">
+                                        <i class="fas fa-play"></i>
+                                        Đỉnh bắt đầu:
+                                    </label>
+                                    <select id="startNode" class="modern-select">
+                                        <option value="A">Node A</option>
+                                        <option value="B">Node B</option>
+                                        <option value="C">Node C</option>
+                                        <option value="D">Node D</option>
+                                        <option value="E">Node E</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label for="speed">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        Tốc độ animation:
+                                    </label>
+                                    <input type="range" id="speed" min="500" max="2000" value="1000" class="modern-slider">
+                                    <span class="slider-value">1000ms</span>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <span class="control-label">
+                                        <i class="fas fa-palette"></i>
+                                        Theme:
+                                    </span>
+                                    <div class="theme-selector">
+                                        <button class="theme-btn active" data-theme="cyber">Cyber</button>
+                                        <button class="theme-btn" data-theme="neon">Neon</button>
+                                        <button class="theme-btn" data-theme="ocean">Ocean</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="algorithm-buttons">
+                                <button id="dfsBtn" class="algo-button dfs-btn">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span>Chạy DFS</span>
+                                    <div class="btn-ripple"></div>
+                                </button>
+                                
+                                <button id="bfsBtn" class="algo-button bfs-btn">
+                                    <i class="fas fa-arrow-right"></i>
+                                    <span>Chạy BFS</span>
+                                    <div class="btn-ripple"></div>
+                                </button>
+                                
+                                <button id="resetBtn" class="algo-button reset-btn">
+                                    <i class="fas fa-undo"></i>
+                                    <span>Reset</span>
+                                    <div class="btn-ripple"></div>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="algorithm-stats">
+                            <h4><i class="fas fa-chart-line"></i> Thống kê</h4>
+                            <div class="stat-grid">
+                                <div class="stat-item">
+                                    <span class="stat-label">Đỉnh đã thăm:</span>
+                                    <span class="stat-value" id="visitedCount">0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Thời gian:</span>
+                                    <span class="stat-value" id="elapsedTime">0ms</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Bước hiện tại:</span>
+                                    <span class="stat-value" id="currentStep">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="demo-main">
+                        <div class="graph-container-modern">
+                            <div class="graph-header">
+                                <h4><i class="fas fa-project-diagram"></i> Đồ thị Interactive</h4>
+                                <div class="graph-controls">
+                                    <button class="graph-btn" id="zoomIn">
+                                        <i class="fas fa-search-plus"></i>
+                                    </button>
+                                    <button class="graph-btn" id="zoomOut">
+                                        <i class="fas fa-search-minus"></i>
+                                    </button>
+                                    <button class="graph-btn" id="centerGraph">
+                                        <i class="fas fa-crosshairs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <canvas id="graphCanvas" width="600" height="400" class="modern-canvas"></canvas>
+                            <div class="canvas-overlay">
+                                <div class="node-info" id="nodeInfo"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="results-modern">
+                            <div class="result-tabs">
+                                <button class="result-tab active" data-tab="traversal">
+                                    <i class="fas fa-route"></i>
+                                    Kết quả duyệt
+                                </button>
+                                <button class="result-tab" data-tab="steps">
+                                    <i class="fas fa-list-ol"></i>
+                                    Từng bước
+                                </button>
+                                <button class="result-tab" data-tab="code">
+                                    <i class="fas fa-code"></i>
+                                    Code thực thi
+                                </button>
+                            </div>
+                            
+                            <div class="result-content">
+                                <div class="result-panel active" id="traversal-panel">
+                                    <div id="traversalResult" class="result-display"></div>
+                                </div>
+                                
+                                <div class="result-panel" id="steps-panel">
+                                    <div id="stepByStep" class="steps-display"></div>
+                                </div>
+                                
+                                <div class="result-panel" id="code-panel">
+                                    <div id="codeExecution" class="code-display"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="examples" class="section-modern">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h3 class="section-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Ví dụ Thực tế Chi tiết
+                </h3>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="examples-container">
+                <div class="example-scenario" data-aos="fade-up">
+                    <div class="scenario-header">
+                        <div class="scenario-icon social">
+                            <i class="fab fa-facebook"></i>
+                        </div>
+                        <h4>Mạng xã hội - Gợi ý kết bạn</h4>
+                        <span class="difficulty easy">Dễ</span>
+                    </div>
+                    
+                    <div class="scenario-content">
+                        <p><strong>Bài toán:</strong> Tìm những người bạn có thể quen biết thông qua bạn chung.</p>
+                        
+                        <div class="example-visual">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop" 
+                                 alt="Social Network" class="scenario-img">
+                        </div>
+                        
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>JavaScript - Friend Recommendation</span>
+                                <button class="copy-btn" data-code="social">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                            <pre class="code-block"><code class="language-javascript">// Mô hình mạng xã hội
+const socialNetwork = {
+    'Alice': ['Bob', 'Charlie', 'David'],
+    'Bob': ['Alice', 'Eve', 'Frank'],
+    'Charlie': ['Alice', 'Grace'],
+    'David': ['Alice', 'Henry'],
+    'Eve': ['Bob', 'Frank'],
+    'Frank': ['Bob', 'Eve'],
+    'Grace': ['Charlie'],
+    'Henry': ['David']
+};
+
+// Tìm gợi ý kết bạn sử dụng BFS
+function friendSuggestions(network, user, maxDistance = 2) {
+    const visited = new Set();
+    const queue = [{ person: user, distance: 0 }];
+    const suggestions = [];
+    
+    visited.add(user);
+    
+    while (queue.length > 0) {
+        const { person, distance } = queue.shift();
+        
+        // Nếu khoảng cách = 2, đó là gợi ý kết bạn
+        if (distance === 2) {
+            suggestions.push(person);
+        }
+        
+        if (distance < maxDistance) {
+            for (let friend of network[person] || []) {
+                if (!visited.has(friend)) {
+                    visited.add(friend);
+                    queue.push({ person: friend, distance: distance + 1 });
+                }
+            }
+        }
+    }
+    
+    return suggestions;
+}
+
+// Sử dụng
+console.log(friendSuggestions(socialNetwork, 'Alice'));
+// Output: ['Eve', 'Frank', 'Grace', 'Henry']</code></pre>
+                        </div>
+                        
+                        <div class="example-explanation">
+                            <h5><i class="fas fa-info-circle"></i> Giải thích:</h5>
+                            <ul>
+                                <li>Sử dụng BFS để duyệt mạng lưới bạn bè</li>
+                                <li>Những người ở khoảng cách 2 là bạn của bạn</li>
+                                <li>Thuật toán này được Facebook, LinkedIn sử dụng</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="example-scenario" data-aos="fade-up" data-aos-delay="200">
+                    <div class="scenario-header">
+                        <div class="scenario-icon navigation">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h4>GPS Navigation - Tìm đường ngắn nhất</h4>
+                        <span class="difficulty medium">Trung bình</span>
+                    </div>
+                    
+                    <div class="scenario-content">
+                        <p><strong>Bài toán:</strong> Tìm đường đi ngắn nhất từ điểm A đến điểm B trong bản đồ.</p>
+                        
+                        <div class="example-visual">
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=250&fit=crop" 
+                                 alt="GPS Navigation" class="scenario-img">
+                        </div>
+                        
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>JavaScript - Shortest Path</span>
+                                <button class="copy-btn" data-code="gps">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                            <pre class="code-block"><code class="language-javascript">// Mô hình bản đồ với trọng số (khoảng cách)
+const cityMap = {
+    'A': [{ node: 'B', weight: 4 }, { node: 'C', weight: 2 }],
+    'B': [{ node: 'A', weight: 4 }, { node: 'C', weight: 1 }, { node: 'D', weight: 5 }],
+    'C': [{ node: 'A', weight: 2 }, { node: 'B', weight: 1 }, { node: 'D', weight: 8 }, { node: 'E', weight: 10 }],
+    'D': [{ node: 'B', weight: 5 }, { node: 'C', weight: 8 }, { node: 'E', weight: 2 }],
+    'E': [{ node: 'C', weight: 10 }, { node: 'D', weight: 2 }]
+};
+
+// Dijkstra's Algorithm cho đường đi ngắn nhất
+function shortestPath(graph, start, end) {
+    const distances = {};
+    const previous = {};
+    const visited = new Set();
+    const pq = [{ node: start, distance: 0 }];
+    
+    // Khởi tạo khoảng cách
+    for (let node in graph) {
+        distances[node] = node === start ? 0 : Infinity;
+        previous[node] = null;
+    }
+    
+    while (pq.length > 0) {
+        // Lấy node có khoảng cách nhỏ nhất
+        pq.sort((a, b) => a.distance - b.distance);
+        const { node: currentNode, distance: currentDist } = pq.shift();
+        
+        if (visited.has(currentNode)) continue;
+        visited.add(currentNode);
+        
+        if (currentNode === end) break;
+        
+        // Cập nhật khoảng cách đến các node kề
+        for (let { node: neighbor, weight } of graph[currentNode] || []) {
+            const newDist = currentDist + weight;
+            
+            if (newDist < distances[neighbor]) {
+                distances[neighbor] = newDist;
+                previous[neighbor] = currentNode;
+                pq.push({ node: neighbor, distance: newDist });
+            }
+        }
+    }
+    
+    // Tái tạo đường đi
+    const path = [];
+    let current = end;
+    while (current !== null) {
+        path.unshift(current);
+        current = previous[current];
+    }
+    
+    return {
+        path: path,
+        distance: distances[end],
+        isReachable: distances[end] !== Infinity
+    };
+}
+
+// Sử dụng
+const result = shortestPath(cityMap, 'A', 'E');
+console.log(`Đường đi: ${result.path.join(' → ')}`);
+console.log(`Khoảng cách: ${result.distance}km`);
+// Output: Đường đi: A → C → B → D → E, Khoảng cách: 8km</code></pre>
+                        </div>
+                        
+                        <div class="example-explanation">
+                            <h5><i class="fas fa-info-circle"></i> Giải thích:</h5>
+                            <ul>
+                                <li>Sử dụng thuật toán Dijkstra (mở rộng của BFS)</li>
+                                <li>Tìm đường đi ngắn nhất có xét trọng số</li>
+                                <li>Google Maps, Apple Maps sử dụng thuật toán này</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="example-scenario" data-aos="fade-up" data-aos-delay="400">
+                    <div class="scenario-header">
+                        <div class="scenario-icon maze">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <h4>Game Development - Tìm đường trong mê cung</h4>
+                        <span class="difficulty hard">Khó</span>
+                    </div>
+                    
+                    <div class="scenario-content">
+                        <p><strong>Bài toán:</strong> AI tìm đường từ vị trí hiện tại đến đích trong game mê cung.</p>
+                        
+                        <div class="example-visual">
+                            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=250&fit=crop" 
+                                 alt="Maze Game" class="scenario-img">
+                        </div>
+                        
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>JavaScript - Maze Solver</span>
+                                <button class="copy-btn" data-code="maze">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                            <pre class="code-block"><code class="language-javascript">// Mê cung 2D (0 = đường đi, 1 = tường, 2 = đích)
+const maze = [
+    [0, 1, 0, 0, 0],
+    [0, 1, 0, 1, 0],
+    [0, 0, 0, 1, 0],
+    [1, 1, 0, 0, 0],
+    [0, 0, 0, 1, 2]
+];
+
+// DFS để tìm đường đi trong mê cung
+function solveMaze(maze, start, visited = new Set()) {
+    const [x, y] = start;
+    const rows = maze.length;
+    const cols = maze[0].length;
+    
+    // Kiểm tra biên và điều kiện
+    if (x < 0 || x >= rows || y < 0 || y >= cols || 
+        maze[x][y] === 1 || visited.has(`${x},${y}`)) {
+        return false;
+    }
+    
+    // Đánh dấu đã thăm
+    visited.add(`${x},${y}`);
+    
+    // Tìm thấy đích
+    if (maze[x][y] === 2) {
+        return [start];
+    }
+    
+    // Thử 4 hướng: lên, xuống, trái, phải
+    const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+    
+    for (let [dx, dy] of directions) {
+        const newX = x + dx;
+        const newY = y + dy;
+        
+        const path = solveMaze(maze, [newX, newY], visited);
+        if (path) {
+            return [start, ...path];
+        }
+    }
+    
+    // Backtrack
+    visited.delete(`${x},${y}`);
+    return false;
+}
+
+// BFS tìm đường đi ngắn nhất trong mê cung
+function solveMazeBFS(maze, start) {
+    const queue = [{ position: start, path: [start] }];
+    const visited = new Set([`${start[0]},${start[1]}`]);
+    const rows = maze.length;
+    const cols = maze[0].length;
+    const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+    
+    while (queue.length > 0) {
+        const { position: [x, y], path } = queue.shift();
+        
+        // Tìm thấy đích
+        if (maze[x][y] === 2) {
+            return path;
+        }
+        
+        // Thử 4 hướng
+        for (let [dx, dy] of directions) {
+            const newX = x + dx;
+            const newY = y + dy;
+            const newPos = `${newX},${newY}`;
+            
+            if (newX >= 0 && newX < rows && 
+                newY >= 0 && newY < cols && 
+                maze[newX][newY] !== 1 && 
+                !visited.has(newPos)) {
+                
+                visited.add(newPos);
+                queue.push({
+                    position: [newX, newY],
+                    path: [...path, [newX, newY]]
+                });
+            }
+        }
+    }
+    
+    return null; // Không tìm thấy đường đi
+}
+
+// Sử dụng
+const startPos = [0, 0];
+const pathDFS = solveMaze(maze, startPos);
+const pathBFS = solveMazeBFS(maze, startPos);
+
+console.log('DFS Path:', pathDFS);
+console.log('BFS Path (shortest):', pathBFS);</code></pre>
+                        </div>
+                        
+                        <div class="example-explanation">
+                            <h5><i class="fas fa-info-circle"></i> Giải thích:</h5>
+                            <ul>
+                                <li>DFS: Tìm được đường đi nhưng có thể không ngắn nhất</li>
+                                <li>BFS: Đảm bảo tìm được đường đi ngắn nhất</li>
+                                <li>Được sử dụng trong AI game, robot navigation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="comparison" class="section-modern">
+            <div class="section-header">
+                <div class="section-number">07</div>
+                <h3 class="section-title">
+                    <i class="fas fa-balance-scale"></i>
+                    So sánh DFS và BFS
+                </h3>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="comparison-modern">
+                <table class="comparison-table-modern">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-list"></i> Tiêu chí</th>
+                            <th><i class="fas fa-arrow-down"></i> DFS</th>
+                            <th><i class="fas fa-arrow-right"></i> BFS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Cấu trúc dữ liệu</strong></td>
+                            <td><span class="tag stack">Stack / Đệ quy</span></td>
+                            <td><span class="tag queue">Queue</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Độ phức tạp thời gian</strong></td>
+                            <td><code>O(V + E)</code></td>
+                            <td><code>O(V + E)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Độ phức tạp không gian</strong></td>
+                            <td><code>O(V)</code></td>
+                            <td><code>O(V)</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tìm đường đi ngắn nhất</strong></td>
+                            <td><span class="status no">❌ Không đảm bảo</span></td>
+                            <td><span class="status yes">✅ Đảm bảo</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bộ nhớ sử dụng</strong></td>
+                            <td><span class="status good">Ít hơn</span></td>
+                            <td><span class="status moderate">Nhiều hơn</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ứng dụng chính</strong></td>
+                            <td>
+                                <div class="app-tags">
+                                    <span class="app-tag">Phát hiện chu trình</span>
+                                    <span class="app-tag">Topological sort</span>
+                                    <span class="app-tag">Backtracking</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="app-tags">
+                                    <span class="app-tag">Đường đi ngắn nhất</span>
+                                    <span class="app-tag">Level order</span>
+                                    <span class="app-tag">Social network</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="modern-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4><i class="fas fa-graduation-cap"></i> Graph Theory Tutorial</h4>
+                <p>Hướng dẫn chi tiết về cấu trúc dữ liệu đồ thị và các thuật toán duyệt.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4><i class="fas fa-code"></i> Technologies</h4>
+                <div class="tech-stack">
+                    <span class="tech-item">HTML5</span>
+                    <span class="tech-item">CSS3</span>
+                    <span class="tech-item">JavaScript ES6+</span>
+                    <span class="tech-item">Canvas API</span>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4><i class="fas fa-link"></i> Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#introduction">Giới thiệu</a></li>
+                    <li><a href="#algorithms">Thuật toán</a></li>
+                    <li><a href="#demo">Demo</a></li>
+                    <li><a href="#examples">Ví dụ</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 - Cấu trúc dữ liệu và Giải thuật | Made with <i class="fas fa-heart"></i> by AI</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="script.js"></script>
+</body>
+</html>
