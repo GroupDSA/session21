@@ -1,34 +1,35 @@
-# Graph Theory Interactive Application 🚀
+# Ứng Dụng Tương Tác Lý Thuyết Đồ Thị 🚀
 
-🌟 Modern web application về cấu trúc dữ liệu đồ thị với DFS/BFS algorithms
+🌟 Ứng dụng web hiện đại về cấu trúc dữ liệu đồ thị với thuật toán DFS/BFS
 
-## Features
+## Tính Năng
 
-- ✨ Interactive Canvas Visualization
-- 🎨 Modern UI with Glassmorphism Effects  
-- 📊 DFS & BFS Algorithm Demonstrations
-- 💻 Real-world Code Examples
-- 📱 Responsive Design
-- 🎭 Multiple Themes (Cyber, Neon, Ocean)
+- ✨ Hiển Thị Đồ Thị Tương Tác với Canvas
+- 🎨 Giao Diện Hiện Đại với Hiệu Ứng Glassmorphism
+- 📊 Minh Họa Thuật Toán DFS & BFS
+- 💻 Ví Dụ Thực Tế với Code Chi Tiết
+- 📱 Thiết Kế Responsive
+- 🎭 Nhiều Chủ Đề (Cyber, Neon, Ocean)
 
-## Files
+## Tệp Tin
 
-- `index.html` - Main webpage with modern design
-- `style.css` - Advanced CSS with animations & glassmorphism
-- `script.js` - Interactive JavaScript with algorithms
+- `index.html` - Trang web chính với thiết kế hiện đại
+- `style.css` - CSS nâng cao với animation & glassmorphism
+- `script.js` - JavaScript tương tác với thuật toán
 
-## Technologies
+## Công Nghệ
 
-- HTML5 & CSS3 with modern features
+- HTML5 & CSS3 với tính năng hiện đại
 - JavaScript ES6+ (Classes, Async/Await)
-- Canvas API for graph visualization
-- Particles.js for background effects
-- Font Awesome 6.4.0 for icons
-- Prism.js for syntax highlighting
+- Canvas API để hiển thị đồ thị
+- Particles.js cho hiệu ứng nền
+- Font Awesome 6.4.0 cho biểu tượng
+- Prism.js để làm nổi bật cú pháp
 
 ## Demo
 
-Open `index.html` in your browser to see the interactive application!
+Mở `index.html` trong trình duyệt để xem ứng dụng tương tác!
 
 ---
-Made with ❤️ for learning Data Structures & Algorithms 
+
+Được tạo với ❤️ để học Cấu Trúc Dữ Liệu & Giải Thuật
